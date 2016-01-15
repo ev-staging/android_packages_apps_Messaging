@@ -987,4 +987,8 @@
     <string name="selected_sim_content_message"><xliff:g id="selected_sim">%s</xliff:g> selected</string>
 
     <string name="work_directory_display_name">Work Profile contacts</string>
+
+    <!-- Swipe to delete -->
+    <string name="swipe_deletes_conversation_text">Swipe deletes conversation</string>
+
 </resources>
