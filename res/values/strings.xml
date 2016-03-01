@@ -977,6 +977,7 @@
     <string name="work_directory_display_name">Work Profile contacts</string>
 
     <!-- Swipe to delete -->
-    <string name="swipe_deletes_conversation_text">Swipe deletes conversation</string>
+    <string name="swipe_to_delete_conversation_pref_title">Swipe to delete</string>
+    <string name="swipe_to_delete_conversation_pref_summary">Swipe to the right to delete a conversation</string>
 
 </resources>
