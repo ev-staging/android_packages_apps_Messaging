@@ -552,7 +552,8 @@ public class ConversationListItemView extends FrameLayout implements OnClickList
         final String conversationId = mData.getConversationId();
         if (PrefsUtils.isSwipeToDeleteEnabled()) {
             mData.deleteConversation();
-            UiUtils.showToastAtBottom(R.string.conversation_deleted);
+            UiUtils.showSnackBar(getContext(), getRootView(),
+                    getResources().getString(R.string.conversation_deleted));
             return;
         }
         UpdateConversationArchiveStatusAction.archiveConversation(conversationId);
