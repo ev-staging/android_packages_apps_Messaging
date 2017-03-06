@@ -505,13 +505,13 @@
         <item name="android:paddingRight">16dp</item>
     </style>
 
-    <style name="WidgetTitle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+    <style name="WidgetTitle" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
         <item name="android:textColor">@color/action_bar_title_text_color</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_marginEnd">8dp</item>
     </style>
 
-    <style name="WidgetConversationTitle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+    <style name="WidgetConversationTitle" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
         <item name="android:textColor">@color/widget_conversation_title_color</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_marginRight">8dp</item>
