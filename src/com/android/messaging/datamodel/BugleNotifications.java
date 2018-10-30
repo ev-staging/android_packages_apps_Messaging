@@ -798,6 +798,13 @@ public class BugleNotifications {
             wearableExtender.setBackground(defaultBackground);
         }
 
+        final PendingIntent readPendingIntent = notificationState.getReadIntent();
+        final NotificationCompat.Action.Builder readActionBuilder =
+                new NotificationCompat.Action.Builder(R.drawable.ic_wear_read,
+                        context.getString(R.string.notification_mark_as_read), readPendingIntent);
+        notifBuilder.addAction(readActionBuilder.build());
+        wearableExtender.addAction(readActionBuilder.build());
+
         if (notificationState instanceof MultiMessageNotificationState) {
             if (attachmentBitmap != null) {
                 // When we've got a picture attachment, we do some switcheroo trickery. When
@@ -833,7 +840,7 @@ public class BugleNotifications {
             maybeAddWearableConversationLog(wearableExtender,
                     (MultiMessageNotificationState) notificationState);
             addDownloadMmsAction(notifBuilder, wearableExtender, notificationState);
-            addWearableVoiceReplyAction(wearableExtender, notificationState);
+            addReplyAction(notifBuilder, wearableExtender, notificationState);
         }
 
         // Apply the wearable options and build & post the notification
@@ -875,7 +882,7 @@ public class BugleNotifications {
         }
     }
 
-    private static void addWearableVoiceReplyAction(
+    private static void addReplyAction(final NotificationCompat.Builder notifBuilder,
             final WearableExtender wearableExtender, final NotificationState notificationState) {
         if (!(notificationState instanceof MultiMessageNotificationState)) {
             return;
@@ -912,6 +919,7 @@ public class BugleNotifications {
                 setChoices(choices)
                 .build();
         actionBuilder.addRemoteInput(remoteInput);
+        notifBuilder.addAction(actionBuilder.build());
         wearableExtender.addAction(actionBuilder.build());
     }
 
