@@ -22,6 +22,8 @@ import android.graphics.drawable.Drawable;
 import com.android.messaging.Factory;
 import com.android.messaging.R;
 import com.android.messaging.util.ImageUtils;
+import com.android.messaging.util.MaterialColorMapUtils;
+import com.android.messaging.util.MaterialPalette;
 
 /**
  * A singleton cache that holds tinted drawable resources for displaying messages, such as
@@ -51,8 +53,10 @@ public class ConversationDrawables {
     private int mIncomingErrorBubbleColor;
     private int mIncomingAudioButtonColor;
     private int mSelectedBubbleColor;
-    private int mThemeColor;
     private int mDefaultBubbleColor;
+
+    private MaterialColorMapUtils mColorMapUtils;
+    private MaterialPalette mPalette;
 
     public static ConversationDrawables get() {
         if (sInstance == null) {
@@ -68,7 +72,7 @@ public class ConversationDrawables {
     }
 
     public int getConversationThemeColor() {
-        return mThemeColor;
+        return mPalette.getPrimary();
     }
 
     public void updateDrawables() {
@@ -102,8 +106,11 @@ public class ConversationDrawables {
         mIncomingAudioButtonColor =
                 resources.getColor(R.color.message_audio_button_color_incoming);
         mSelectedBubbleColor = resources.getColor(R.color.message_bubble_color_selected);
-        mThemeColor = resources.getColor(R.color.primary_color);
         mDefaultBubbleColor = resources.getColor(R.color.message_bubble_color_default);
+
+        final int defaultColor = resources.getColor(R.color.primary_color);
+        mColorMapUtils = new MaterialColorMapUtils(resources);
+        mPalette = mColorMapUtils.calculatePrimaryAndSecondaryColor(defaultColor);
     }
 
     public Drawable getBubbleDrawable(final boolean selected, final boolean incoming,
@@ -135,7 +142,7 @@ public class ConversationDrawables {
     }
 
     private int getAudioButtonColor(final boolean incoming) {
-        return incoming ? mIncomingAudioButtonColor : mThemeColor;
+        return incoming ? mIncomingAudioButtonColor : mPalette.getPrimary();
     }
 
     public Drawable getPlayButtonDrawable(final boolean incoming) {
@@ -161,7 +168,7 @@ public class ConversationDrawables {
     public Drawable getFastScrollThumbDrawable(final boolean pressed) {
         if (pressed) {
             return ImageUtils.getTintedDrawable(mContext, mFastScrollThumbPressedDrawable,
-                    mThemeColor);
+                    mPalette.getPrimary());
         } else {
             return mFastScrollThumbDrawable;
         }
@@ -170,6 +177,6 @@ public class ConversationDrawables {
     public Drawable getFastScrollPreviewDrawable(boolean positionRight) {
         Drawable protoDrawable = positionRight ? mFastScrollPreviewDrawableRight :
             mFastScrollPreviewDrawableLeft;
-        return ImageUtils.getTintedDrawable(mContext, protoDrawable, mThemeColor);
+        return ImageUtils.getTintedDrawable(mContext, protoDrawable, mPalette.getPrimary());
     }
 }
