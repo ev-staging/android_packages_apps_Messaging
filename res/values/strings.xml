@@ -993,4 +993,9 @@
 
     <!-- Notification channel -->
     <string name="notification_channel_messages_title">Messages</string>
+
+    <!-- Font family used when drawing letters for letter tile avatars.
+         Do not translate. -->
+    <string name="letter_tile_letter_font_family">sans-serif-medium</string>
+
 </resources>
