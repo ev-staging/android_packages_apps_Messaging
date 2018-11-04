@@ -995,4 +995,8 @@
     <!-- Mark message as read -->
     <string name="notification_mark_as_read">Mark as read</string>
 
+    <!-- Font family used when drawing letters for letter tile avatars.
+         Do not translate. -->
+    <string name="letter_tile_letter_font_family">sans-serif-medium</string>
+
 </resources>
