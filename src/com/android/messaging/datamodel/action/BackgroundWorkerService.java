@@ -19,7 +19,6 @@ package com.android.messaging.datamodel.action;
 import android.app.IntentService;
 import android.app.IntentService;
 import android.app.Notification;
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +28,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.android.messaging.Factory;
+import com.android.messaging.datamodel.BugleNotifications;
 import com.android.messaging.datamodel.DataModel;
 import com.android.messaging.datamodel.DataModelException;
 import com.android.messaging.util.Assert;
@@ -49,7 +49,7 @@ import com.android.messaging.R;
 public class BackgroundWorkerService extends IntentService {
     private static final String TAG = LogUtil.BUGLE_DATAMODEL_TAG;
     private static final boolean VERBOSE = false;
-    private static final String CHANNEL_ID = "messaging_channel";
+    private static final String CHANNEL_ID = "processing_channel";
 
     private static final String WAKELOCK_ID = "bugle_background_worker_wakelock";
     @VisibleForTesting
@@ -117,14 +117,17 @@ public class BackgroundWorkerService extends IntentService {
             return;
         }
 
-        createChannel();
         Context context = Factory.get().getApplicationContext();
+        BugleNotifications.createNotificationChannel(context,
+                CHANNEL_ID,
+                R.string.notification_channel_processing_title,
+                NotificationManager.IMPORTANCE_MIN);
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(context.getString(R.string.background_worker_notif))
+                .setSmallIcon(R.drawable.ic_sms_light)
                 .build();
         int notifId = (int) System.currentTimeMillis() % 10000;
         startForeground(notifId, notification);
-
     }
 
     @Override
@@ -194,20 +197,5 @@ public class BackgroundWorkerService extends IntentService {
                 mHost.handleFailureFromBackgroundWorker(action, exception);
             }
         }
-    }
-
-    private void createChannel() {
-        NotificationManager manager = getSystemService(NotificationManager.class);
-
-        NotificationChannel existing = manager.getNotificationChannel(CHANNEL_ID);
-        if (existing != null) {
-            return;
-        }
-
-        Context context = Factory.get().getApplicationContext();
-        String title = context.getString(R.string.notification_channel_title);
-        NotificationChannel newChannel = new NotificationChannel(CHANNEL_ID,
-                title, NotificationManager.IMPORTANCE_DEFAULT);
-        manager.createNotificationChannel(newChannel);
     }
 }
