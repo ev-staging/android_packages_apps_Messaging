@@ -506,14 +506,14 @@ public class ConversationListItemView extends FrameLayout implements OnClickList
 
         if (PrefsUtils.isSwipeToDeleteEnabled()) {
             mCrossSwipeArchiveLeftImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_delete_small_dark));
+                    .getDrawable(R.drawable.ic_delete_small));
             mCrossSwipeArchiveRightImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_delete_small_dark));
+                    .getDrawable(R.drawable.ic_delete_small));
         } else {
             mCrossSwipeArchiveLeftImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_archive_small_dark));
+                    .getDrawable(R.drawable.ic_archive_small));
             mCrossSwipeArchiveRightImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_archive_small_dark));
+                    .getDrawable(R.drawable.ic_archive_small));
         }
     }
 
