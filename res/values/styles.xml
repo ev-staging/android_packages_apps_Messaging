@@ -27,7 +27,6 @@
         -->
     </style>
 
-
     <!-- Application theme. -->
     <style name="BugleTheme" parent="BugleBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
@@ -38,6 +37,18 @@
          <item name="android:textColorHighlight">@color/text_highlight_color</item>
          <item name="actionBarStyle">@style/BugleActionBar</item>
          <item name="apnPreferenceStyle">@style/ApnPreference</item>
+         <item name="android:listViewStyle">@style/ListViewStyle</item>
+         <item name="actionBarPopupTheme">@style/PopupMenuStyleAppCompat</item>
+         <item name="android:actionBarPopupTheme">@style/PopupMenuStyleAppCompat</item>
+    </style>
+
+    <style name="ListViewStyle" parent="@android:style/Widget.Material.Light.ListView">
+        <item name="android:overScrollMode">always</item>
+        <item name="android:textColor">@color/message_title_text</item>
+        <item name="android:background">@color/conversation_background</item>
+    </style>
+
+    <style name="PopupMenuStyleAppCompat" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
     </style>
 
     <style name="BugleTheme.ConversationActivity"
@@ -55,11 +66,11 @@
 
     <style name="BugleTheme.DialogActivity" parent="@style/Theme.AppCompat.Light.Dialog">
         <item name="android:windowNoTitle">false</item>
-        <item name="android:background">@android:color/white</item>
+        <item name="android:background">@color/conversation_background</item>
     </style>
 
     <style name="BugleTheme.ConversationListActivity" parent="BugleTheme">
-        <item name="android:windowBackground">@android:color/background_light</item>
+        <item name="android:windowBackground">@color/conversation_background</item>
     </style>
 
     <style name="BugleTheme.ArchivedConversationListActivity" parent="BugleTheme.ConversationListActivity">

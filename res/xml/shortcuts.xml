@@ -1,7 +1,7 @@
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/shortcut_compose_new"
+        android:icon="@drawable/shortcut_compose"
         android:shortcutDisabledMessage="@string/share_new_message"
         android:shortcutId="shortcut1"
         android:shortcutLongLabel="@string/share_new_message"

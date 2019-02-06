@@ -94,6 +94,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingRight="16px"
                 android:orientation="vertical">
 
                 <!-- Contains media button and compose message bubble whose centers should be
@@ -109,7 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_attachment_dark"
+                        android:src="@drawable/ic_attachment"
                         android:paddingTop="@dimen/compose_message_attachment_padding_topBottom"
                         android:paddingBottom="@dimen/compose_message_attachment_padding_topBottom"
                         android:contentDescription="@string/attachMediaButtonContentDescription" />
@@ -121,8 +122,11 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_gravity="center"
+                        android:paddingTop="@dimen/compose_message_padding_topBottom"
+                        android:paddingBottom="@dimen/compose_message_padding_topBottom"
                         android:background="@drawable/msg_bubble_input"
                         android:hint="@string/compose_message_view_hint_text"
+                        android:textColorHint="@color/conversation_list_item_read"
                         android:imeOptions="actionSend|flagNoEnterAction|flagNoExtractUi" />
 
                 </LinearLayout>
