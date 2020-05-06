@@ -70,6 +70,17 @@ LOCAL_CERTIFICATE := platform
 
 LOCAL_SDK_VERSION := current
 
+LOCAL_REQUIRED_MODULES += com.android.messaging_whitelist
+
 include $(BUILD_PACKAGE)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := com.android.messaging_whitelist
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_PATH := $(TARGET_OUT_PRODUCT_ETC)/sysconfig
+LOCAL_PRODUCT_MODULE := true
+LOCAL_SRC_FILES := com.android.messaging_whitelist.xml
+include $(BUILD_PREBUILT)
 
 include $(call all-makefiles-under, $(LOCAL_PATH))
